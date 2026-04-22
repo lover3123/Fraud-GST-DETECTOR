@@ -13,7 +13,8 @@ export default function UploadSection({ onDataReady }) {
     if (jobId) {
       interval = setInterval(async () => {
         try {
-          const res = await fetch(`http://127.0.0.1:8000/api/jobs/${jobId}`, {
+          const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+          const res = await fetch(`${apiBaseUrl}/api/jobs/${jobId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           if (res.status === 401) throw new Error("Session expired");
@@ -51,7 +52,8 @@ export default function UploadSection({ onDataReady }) {
     formData.append('file', file)
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/upload-invoices', {
+      const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const response = await fetch(`${apiBaseUrl}/api/upload-invoices`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

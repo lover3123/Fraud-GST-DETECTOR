@@ -15,7 +15,8 @@ export default function Login() {
     setError('');
     
     try {
-      const url = isRegister ? 'http://127.0.0.1:8000/api/auth/register' : 'http://127.0.0.1:8000/api/auth/login';
+      const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const url = isRegister ? `${apiBaseUrl}/api/auth/register` : `${apiBaseUrl}/api/auth/login`;
       
       let initOptions = {};
       if (isRegister) {

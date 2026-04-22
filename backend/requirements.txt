@@ -7,3 +7,4 @@ pydantic
 sqlalchemy
 passlib[bcrypt]
 PyJWT
+gunicorn
